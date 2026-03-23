@@ -4,10 +4,6 @@ A modern web application that analyzes the sentiment of user input (Positive �
 
 ---
 
-## 🚀 Live Demo
-(After deployment, add your link here)
-👉 https://your-app-link.onrender.com
-
 ---
 
 ## 🧠 Project Overview
