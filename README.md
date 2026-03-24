@@ -1,41 +1,76 @@
-# 🎬 AI Sentiment Analyzer
+# 📌 AI Sentiment Analyzer 🚀
 
-A modern web application that analyzes the sentiment of user input (Positive 😊 / Negative 😡 / Neutral 😐) using Natural Language Processing.
-
----
+A modern NLP-powered web application that analyzes user text and classifies it into **Positive 😊, Negative 😡, or Neutral 😐 sentiment** using VADER sentiment analysis.
 
 ---
 
-## 🧠 Project Overview
+## 🌍 Live Demo
 
-This project uses **VADER (Valence Aware Dictionary and sEntiment Reasoner)**, a rule-based NLP model from NLTK, to analyze sentiment in real-time.
-
-Unlike basic ML models, VADER understands:
-- Context (e.g., "not bad" → Positive)
-- Intensity (e.g., "very good" → Strong Positive)
-- Negations and modifiers
+👉 https://sentiment-analyzer-sw4p.onrender.com  
 
 ---
 
-## 🛠️ Tech Stack
+## 🧠 Problem Statement
 
-- Python 🐍
-- Flask 🌐
-- NLTK (VADER) 🧠
-- HTML + CSS 🎨
+Understanding user sentiment from text is important for:
+
+- Customer feedback analysis  
+- Product reviews  
+- Social media monitoring  
+- Business insights  
+
+This project provides a **real-time sentiment classification system**.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-- 🔍 Real-time sentiment analysis
-- 🌙 Dark mode toggle
-- 🎉 Emoji-based animated results
-- ⏳ Loading spinner
-- 📜 Input history (last 5 entries)
-- 📊 Confidence score display
-- 💻 Clean and modern UI
+- 🔍 Real-time sentiment prediction  
+- 😊 Emoji-based output (Positive / Negative / Neutral)  
+- 📊 Confidence score  
+- 🌙 Dark mode UI  
+- ⏳ Loading animation  
+- 📜 Input history  
+- ⚡ Fast and lightweight  
+
+---
+
+## 🧠 Tech Stack
+
+### Backend
+- Python  
+- Flask  
+
+### NLP
+- NLTK  
+- VADER Sentiment Analyzer  
+
+### Frontend
+- HTML  
+- CSS  
+- JavaScript  
+
+### Deployment
+- Render  
+
+---
+
+## ⚙️ How It Works
+
+1. User enters text  
+2. Text is processed using VADER  
+3. Sentiment scores are calculated  
+4. Final sentiment is displayed with confidence  
 
 ---
 
 ## 📁 Project Structure
+sentiment-analyzer/
+│
+├── app.py
+├── requirements.txt
+├── Procfile
+├── README.md
+│
+└── templates/
+└── index.html
