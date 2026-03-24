@@ -33,12 +33,21 @@ def home():
         compound = scores['compound']
 
         # Prediction logic
-        if compound >= 0.05:
-            prediction = "Positive 😊"
-        elif compound <= -0.05:
-            prediction = "Negative 😡"
-        else:
-            prediction = "Neutral 😐"
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+sia = SentimentIntensityAnalyzer()
+
+def predict_sentiment(text):
+    score = sia.polarity_scores(text)
+    compound = score['compound']
+
+    # 🔥 Custom thresholds (better)
+    if compound >= 0.3:
+        return "Positive 😊", compound
+    elif compound <= -0.3:
+        return "Negative 😡", compound
+    else:
+        return "Neutral 😐", compound
 
         confidence = round(abs(compound) * 100, 2)
 
