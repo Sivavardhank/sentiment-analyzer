@@ -6,7 +6,7 @@ A modern NLP-powered web application that analyzes user text and classifies it i
 
 ## 🌍 Live Demo
 
-👉 https://sentiment-analyzer-sw4p.onrender.com  
+👉 https://sentiment-analyzer-sw4p.onrender.com/
 
 ---
 
