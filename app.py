@@ -1,39 +1,14 @@
-# app.py
+from flask import Flask, render_template, request
 import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
+app = Flask(__name__)
+
+# Download VADER safely
 try:
     nltk.data.find('sentiment/vader_lexicon')
 except:
     nltk.download('vader_lexicon')
-    
-from flask import Flask, render_template, request
-import nltk
-from nltk.sentiment import SentimentIntensityAnalyzer
-
-# Download once
-nltk.download('vader_lexicon')
-
-app = Flask(__name__)
-
-# Load VADER
-sia = SentimentIntensityAnalyzer()
-
-# ------------------------
-# ROUTE
-# ------------------------
-@app.route("/", methods=["GET", "POST"])
-def home():
-    prediction = ""
-    confidence = ""
-
-    if request.method == "POST":
-        msg = request.form["message"]
-
-        scores = sia.polarity_scores(msg)
-        compound = scores['compound']
-
-        # Prediction logic
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 sia = SentimentIntensityAnalyzer()
 
@@ -41,22 +16,28 @@ def predict_sentiment(text):
     score = sia.polarity_scores(text)
     compound = score['compound']
 
-    # 🔥 Custom thresholds (better)
+    # Custom thresholds
     if compound >= 0.3:
-        return "Positive 😊", compound
+        return "Positive 😊", round(compound*100,2)
     elif compound <= -0.3:
-        return "Negative 😡", compound
+        return "Negative 😡", round(compound*100,2)
     else:
-        return "Neutral 😐", compound
+        return "Neutral 😐", round(compound*100,2)
 
-        confidence = round(abs(compound) * 100, 2)
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        text = request.form["text"]
+        prediction, confidence = predict_sentiment(text)
 
+        return render_template("index.html",
+                               prediction=prediction,
+                               confidence=confidence)
+
+    # ✅ VERY IMPORTANT (for GET request)
     return render_template("index.html",
-                           prediction=prediction,
-                           confidence=confidence)
+                           prediction=None,
+                           confidence=None)
 
-# ------------------------
-# RUN APP
-# ------------------------
 if __name__ == "__main__":
     app.run(debug=True)
